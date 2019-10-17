@@ -1,15 +1,16 @@
-This document specifies the coding style for VAST. The style is based on
-STL, [Google style][google-style], and [CAF style][caf-style] guidelines.
+# Contributing
 
-If you are looking to contribute to projects within the Tenzir organization
-mainly written in languages other than C++, please try to adhere to the
-respective projects existing coding style.
+If you are looking to contribute to projects within the Tenzir organization,
+please try to adhere to the respective projects existing coding style.
+
+This document specifies our git workflow, and the coding style for VAST, which
+we use for all our C++ and CMake projects. The style is based on STL, [Google
+style][google-style], and [CAF style][caf-style] guidelines.
 
 [google-style]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
 [caf-style]: https://github.com/actor-framework/actor-framework/blob/master/CONTRIBUTING.md
 
-Git Workflow
-============
+## Git Workflow
 
 VAST's git workflow encompasses the following key aspects. (For general git
 style guidelines, see https://github.com/agis-/git-style-guide.)
@@ -31,8 +32,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
   + A maintainer will merge the topic branch into `master` after it passes the
     code review
 
-Commit Messages
----------------
+### Commit Messages
 
 - The first line succinctly summarizes the changes in no more than 50
   characters. It is capitalized and written in and imperative present tense:
@@ -46,11 +46,9 @@ Commit Messages
 - Optional long descriptions as full sentences begin on the third line,
   indented at 72 characters per line.
 
-Coding Style | c++
-==================
+## Coding Style | C++
 
-General
--------
+### General
 
 - Use 2 spaces per indentation level.
 
@@ -101,8 +99,7 @@ General
 - Use inline functions for trivial code, such as getters/setters or
   straight-forward logic that does not span more than 3 lines.
 
-Header
-------
+### Header
 
 - Header filenames end in `.hpp` and implementation filenames in `.cpp`.
 
@@ -140,8 +137,7 @@ Header
   is: inputs, then outputs. API coherence and symmetry trumps this rule, e.g.,
   when the first argument of related functions model the same concept.
 
-Classes
--------
+### Classes
 
 - Use the order `public`, `proctected`, `private` for functions and members in
   classes.
@@ -171,8 +167,7 @@ Classes
   parenthesis-initialization to avoid calling a `std::initializer_list`
   overload.
 
-Naming
-------
+### Naming
 
 - Class names, constants, and function names are lowercase with underscores.
 
@@ -204,8 +199,7 @@ Naming
 - If a function has a return value, use `result` as variable name.
 
 
-Breaking
---------
+### Breaking
 
 - Break constructor initializers after the comma, use two spaces for
   indentation, and place each initializer on its own line (unless you don't
@@ -273,8 +267,7 @@ Breaking
   }
   ```
 
-Template Metaprogramming
-------------------------
+### Template Metaprogramming
 
 - Use the `typename` keyword only to access dependent types. For general
   template parameters, use `class` instead:
@@ -326,8 +319,7 @@ Template Metaprogramming
   constexpr auto my_trait_v = my_trait<T>::value;
   ```
 
-Logging
--------
+### Logging
 
 - Available log levels are *ERROR*, *WARNING*, *INFO*, *DEBUG* and *TRACE*.
 
@@ -367,8 +359,7 @@ Logging
   purpose algorithm implementations.
 
 
-Comments
---------
+### Comments
 
 - Doxygen comments start with `///`.
 
@@ -408,8 +399,7 @@ Comments
 - Use `//` or `/*` and `*/` to define basic comments that should not be
   swallowed by Doxygen.
 
-External Files
---------------
+### External Files
 
 When integrating 3rd-party code into the code base, use the following scaffold:
 
@@ -440,8 +430,7 @@ When integrating 3rd-party code into the code base, use the following scaffold:
 (code here)
 ```
 
-Unit Tests
-----------
+### Unit Tests
 
 - Every new feature must come with unit tests.
 
@@ -516,8 +505,7 @@ Unit Tests
   FIXTURE_SCOPE_END()
   ```
 
-Continuous Integration
-----------------------
+### Continuous Integration
 
 We use Jenkins to build and test each commit. Merging a pull request requires
 that all checks pass for the latest commit in the branch. GitHub displays the
@@ -547,23 +535,20 @@ following checks:
 
 [integration]: https://github.com/vast-io/vast/tree/master/integration
 
-Coding Style | cmake
-====================
+## Coding Style | cmake
 
-General
--------
+### General
 
 - Prefer targets and properties over variables.
 
-- Don't use global include_directories.
+- Don't use global *include_directories*.
 
 - Export consumable targets to both build and install directories.
 
 - Assign sensible export names for your targets, the `vast::` namespace is
   implicitly prefixed.
 
-Formatting
-----------
+### Formatting
 
 - The cmake files are formatted with
   [cmake-format](https://github.com/cheshirekow/cmake_format).
