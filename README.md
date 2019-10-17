@@ -1,8 +1,7 @@
 # Community Health Files
 
-This repository hosts the code of conduct, a guide on how to get support, how
-to contribute, issue templates and a security policy for all open-source
-projects hosted by Tenzir.
+This repository hosts the Code of Conduct, how to contribute, issue templates
+and a security policy for all open-source projects hosted by Tenzir.
 
 ## Code of Conduct
 
