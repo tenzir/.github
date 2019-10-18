@@ -1,28 +1,35 @@
 # Security Policy
 
-Security is a serious matter for Tenzir. We want to ensure and maintain a
+Security is a serious matter for us. We want to ensure and maintain a
 secure environment for our customers and the open-source community.
 
 ## Reporting a Vulnerability
 
-If you find a security bug in one of our projects, please work with Tenzir's
-security team following responsible disclosure principles and these guidelines:
+We are eager to work with the community to resolve security vulnerabilities
+within our tech stack in a timely manner and to properly acknowledge the
+contributor(s). Please do not publicly disclose a vulnerability until we have
+an opportunity to review and address the issue. Follow these steps to report a
+vulneratbility:
 
-- Do not submit a normal issue or pull request in our public repositories.
-  Instead, open a security advisory, which is visible to project maintainers
-  only.
-- We will review your submission and may follow up for additional details.
-- If you have a patch, we will review it and approve it privately; once merged
-  it will be publicly disclosed.
-- We will keep you informed during our investigation. Feel free to check in for
-  a status update.
-- Please do not publicly blog or post about the security issue until after we
-  have updated the public repository so that other downstream users have an
-  opportunity to patch their software.
+1. [Open a security advisory][help-security-advisory], which is visible to
+   project maintainers only. Please do *not* submit a normal issue or pull
+   request in our public repositories.
+2. We will confirm the receipt of the report within two business days. (It make
+   take additional time time to resolve the issue.) 
+3. If you already have a patch, we will review it and approve it privately;
+   once merged it will be publicly disclosed. We will acknowledge you in our
+   changelog.
+4. In case we need additional information during the investigation, we will be
+   actively reaching out.
+
+Please do not publicly mention the security issue until after we have updated
+the public repository so that other downstream users have an opportunity to
+patch their software.
 
 ## Contact
 
-If you have any questions, please reach out to Tenzir's security team directly
-at [security@tenzir.com][security-mail].
+If you have any questions, please contact us directly at
+[security@tenzir.com][security-mail].
 
 [security-mail]: mailto://security@tenzir.com
+[help-security-advisory]: https://help.github.com/en/articles/creating-a-maintainer-security-advisory
