@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Contact Us
+  - name: Contact us
     url: https://tenzir.com/contact
     about: Reach out to Tenzir
   - name: Chat
     url: https://gitter.im/tenzir/chat
-    about: Come chat with us interactively!
+    about: Come chat with us interactively
