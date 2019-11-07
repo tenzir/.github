@@ -7,14 +7,22 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### Observed Behavior
+<!-- What happened? -->
 
-**To Reproduce**
-Steps to reproduce the behavior.
+### Expected Behavior
+<!-- What should have happened? -->
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Steps to reproduce
 
-**Additional context**
-Add any other context about the problem here.
+1. A
+2. B
+3. C
+
+### Environment Context
+
+- Version:
+- Compiler:
+- Operating System:
+- ..
+
