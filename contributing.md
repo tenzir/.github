@@ -110,6 +110,24 @@ automatically apply EditorConfig files.
   linters in their respective configuration files, so they are automatically
   applied.
 
+### CMake
+
+#### General
+
+- Prefer targets and properties over variables.
+
+- Don't use global *include_directories*.
+
+- Export consumable targets to both build and install directories.
+
+- Assign sensible export names for your targets, the `vast::` namespace is
+  implicitly prefixed.
+
+#### Formatting
+
+- The cmake files are formatted with
+  [cmake-format](https://github.com/cheshirekow/cmake_format).
+
 ### C++
 
 #### General
@@ -594,21 +612,3 @@ following checks:
   similar to the *tests* check.
 
 [integration]: https://github.com/vast-io/vast/tree/master/integration
-
-### cmake
-
-#### General
-
-- Prefer targets and properties over variables.
-
-- Don't use global *include_directories*.
-
-- Export consumable targets to both build and install directories.
-
-- Assign sensible export names for your targets, the `vast::` namespace is
-  implicitly prefixed.
-
-#### Formatting
-
-- The cmake files are formatted with
-  [cmake-format](https://github.com/cheshirekow/cmake_format).
