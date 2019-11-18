@@ -69,6 +69,26 @@ guide](https://github.com/agis/git-style-guide).
 
 ## Coding Style
 
+### Documentation
+
+When documenting bugs, deficiencies, future tasks, or noteworthy things in the
+code, we use two keywords that most editors and tools recognize: `FIXME:` and
+`TODO:`. We use `FIXME` for a *known bug* and `TODO` for everything else. The
+subsequent `:` is important for tooling, such as syntax highlighters. Here are
+two examples:
+
+```cpp
+// FIXME: this currently fails on FreeBSD. 
+// FIXME: this algorithms is broken for i < 0.
+```
+
+A typical `TODO` could be:
+
+```python
+# TODO: refactor this code to separate mechanism from policy
+# TODO: add another argument to process user-defined tags
+```
+
 ### EditorConfig
 
 - Some projects in the Tenzir organization provide `.editorconfig` files. Please
