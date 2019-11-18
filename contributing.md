@@ -61,7 +61,7 @@ guide](https://github.com/agis/git-style-guide).
 
 - The second line is empty.
 
-- An optional long descriptions as full sentences begin on the third line,
+- Optional long descriptions as full sentences begin on the third line,
   indented at 72 characters per line, explaining _why_ the change is needed,
   _how_ it addresses the underlying issue, and what _side-effects_ it might
   have.
@@ -106,7 +106,7 @@ automatically apply EditorConfig files.
 
 ### Web Development
 
-- All web-based projects in the Tenzir organization define stylecheckers and
+- All web-based projects in the Tenzir organization define style checkers and
   linters in their respective configuration files, so they are automatically
   applied.
 
@@ -210,8 +210,8 @@ automatically apply EditorConfig files.
   accordingly. Includes separated by preprocessor directives need to be sorted
   manually.
 
-  Within each section the order should be alphabetical. VAST includes should
-  always be in doublequotes and relative to the source directory, whereas
+  Within each section, the order should be alphabetical. VAST includes should
+  always be in double quotes and relative to the source directory, whereas
   system-wide includes in angle brackets. See below for an example on how to
   structure includes in unit tests.
 
@@ -221,7 +221,7 @@ automatically apply EditorConfig files.
 
 #### Classes
 
-- Use the order `public`, `proctected`, `private` for functions and members in
+- Use the order `public`, `protected`, `private` for functions and members in
   classes.
 
 - Mark single-argument constructors as `explicit` to avoid implicit
@@ -233,7 +233,7 @@ automatically apply EditorConfig files.
 - Friends first: put friend declaration immediate after opening the class.
 
 - Put declarations (and/or definitions) of assignment operators right after the
-  contrstructors, and all other operators at the bottom of the public section.
+  constructors, and all other operators at the bottom of the public section.
 
 - Use structs for state-less classes or when the API is the struct's state.
 
