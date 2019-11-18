@@ -3,40 +3,58 @@
 If you are looking to contribute to projects within the Tenzir organization,
 please try to adhere to the respective projects existing coding style.
 
-This document specifies our git workflow, and the coding style for VAST, which
-we use for all our C++ and CMake projects. The style is based on STL, [Google
+This document specifies our git and GitHub workflows, a set of recommendations
+for different languages, and the coding style for VAST, which we use for all
+our C++ and CMake projects. The style is based on STL, [Google
 style][google-style], and [CAF style][caf-style] guidelines.
 
 [google-style]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
 [caf-style]: https://github.com/actor-framework/actor-framework/blob/master/CONTRIBUTING.md
 
-## Git Workflow
+## Git and GitHub Workflow
 
-VAST's git workflow encompasses the following key aspects. (For general git
-style guidelines, see https://github.com/agis-/git-style-guide.)
+At Tenzir, our git workflow encompasses the following key aspects.
 
-- The `master` branch reflects the latest state of development and should
+- The `master` branch reflects the latest state of development, and should
   always compile.
 
-- For new features and non-trivial fixes, use *topic branches* that branch off
-  `master` with a naming convention of `topic/short-description`. After
-  completing work in a topic branch, check the following steps to prepare
-  for a merge back into `master`:
+- For new features or fixes, use *topic branches* that branch off `master` with
+  a naming convention of `topic/short-description`. After completing work in a
+  topic branch, check the following steps to prepare for a merge back into
+  `master`:
 
-  + Squash your commits such that each commit reflects a self-contained change
-  + Create a pull request to `master` on github
+  + Squash your commits such that each commit reflects a self-contained change.
+    You can interactively rebase all commits in your current pull request with
+    `git rebase --interactive $(git merge-base origin/master HEAD)`.
+  + Create a pull request to `master` on GitHub.
   + Wait for the results of continuous integration tools and fix any reported
-    issues
-  + Ask a maintainer to review your work when your changes merge cleanly
-  + Address the feedback articulated during the review
+    issues.
+  + Ask a maintainer to review your work when your changes merge cleanly. If
+    you don't want a specific maintainer's feedback, ask for a review from the
+    `tenzir/backend` or `tenzir/frontend` teams.
+  + Address the feedback articulated during the review.
   + A maintainer will merge the topic branch into `master` after it passes the
-    code review
+    code review.
+
+- Similarly, for features or fixes relating to a specific GitHub issue, use
+  *issue branches* that branch off `master` with a naming convention of
+  `issue/XXX`, replacing XXX with the issue number.
+
+- Tenzir internally uses ClubHouse for project management, and employees are
+  advised to create *story branches* that branch off `master` with a naming
+  convention of `story/chXXX`, replacing XXX with the story number.
+
 
 ### Commit Messages
 
+Commit messages are formatted according to [this git style
+guide](https://github.com/agis/git-style-guide).
+
 - The first line succinctly summarizes the changes in no more than 50
   characters. It is capitalized and written in and imperative present tense:
-  e.g., "Fix bug" as opposed to "Fixes bug" or "Fixed bug".
+  e.g., "Fix a bug" as opposed to "Fixes a bug" or "Fixed a bug". As a
+  mnemonic, prepend "When applied, this commit will" to the commit summary and
+  check if it builds a full sentence.
 
 - The first line does not contain a dot at the end. (Think of it as the header
   of the following description).
@@ -44,11 +62,75 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
 - The second line is empty.
 
 - Optional long descriptions as full sentences begin on the third line,
-  indented at 72 characters per line.
+  indented at 72 characters per line, explaining _why_ the change is needed,
+  _how_ it addresses the underlying issue, and what _side-effects_ it might
+  have.
 
-## Coding Style | C++
 
-### General
+## Coding Style
+
+### EditorConfig
+
+- Some projects in the Tenzir organization provide `.editorconfig` files. Please
+respect the settings defined in these. For many editors, plugins exist to
+automatically apply EditorConfig files.
+
+### Scripting Languages
+
+- Scripts are executables (`chmod +x path/to/your-script`) and words in
+  their names are separated using dashes (`your-script` over `your_script`).
+
+- The first line of a script should be a shebang, e.g., `'#!/bin/sh'` or
+  `#!/usr/bin/env python3`.
+
+- The second line is empty.
+
+- Starting at the third line, write a comment detailing usage instructions, and
+  a short and concise description of the script.
+
+#### Shell Scripts
+
+- Prefer to use POSIX sh when possible.
+
+- Tenzir uses [ShellCheck](https://github.com/koalaman/shellcheck) for linting.
+  Pull request review feedback for shell scripts is in parts based on ShellCheck.
+
+#### Python
+
+- We use Python 3, with no special restrictions for newer features. Specify the
+  minimum required version in the shebang, e.g. `#!/usr/bin/env python3.6`.
+
+- Use [black](https://github.com/psf/black) for linting. Black is a heavily
+  opinionated tool for both formatting and linting, and we found its opinion to
+  be a good standard for us to use.
+
+### Web Development
+
+- All web-based projects in the Tenzir organization define style checkers and
+  linters in their respective configuration files, so they are automatically
+  applied.
+
+### CMake
+
+#### General
+
+- Prefer targets and properties over variables.
+
+- Don't use global *include_directories*.
+
+- Export consumable targets to both build and install directories.
+
+- Assign sensible export names for your targets, the `vast::` namespace is
+  implicitly prefixed.
+
+#### Formatting
+
+- The cmake files are formatted with
+  [cmake-format](https://github.com/cheshirekow/cmake_format).
+
+### C++
+
+#### General
 
 - Use 2 spaces per indentation level.
 
@@ -99,7 +181,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
 - Use inline functions for trivial code, such as getters/setters or
   straight-forward logic that does not span more than 3 lines.
 
-### Header
+#### Header
 
 - Header filenames end in `.hpp` and implementation filenames in `.cpp`.
 
@@ -128,8 +210,8 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
   accordingly. Includes separated by preprocessor directives need to be sorted
   manually.
 
-  Within each section the order should be alphabetical. VAST includes should
-  always be in doublequotes and relative to the source directory, whereas
+  Within each section, the order should be alphabetical. VAST includes should
+  always be in double quotes and relative to the source directory, whereas
   system-wide includes in angle brackets. See below for an example on how to
   structure includes in unit tests.
 
@@ -137,9 +219,9 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
   is: inputs, then outputs. API coherence and symmetry trumps this rule, e.g.,
   when the first argument of related functions model the same concept.
 
-### Classes
+#### Classes
 
-- Use the order `public`, `proctected`, `private` for functions and members in
+- Use the order `public`, `protected`, `private` for functions and members in
   classes.
 
 - Mark single-argument constructors as `explicit` to avoid implicit
@@ -151,7 +233,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
 - Friends first: put friend declaration immediate after opening the class.
 
 - Put declarations (and/or definitions) of assignment operators right after the
-  contrstructors, and all other operators at the bottom of the public section.
+  constructors, and all other operators at the bottom of the public section.
 
 - Use structs for state-less classes or when the API is the struct's state.
 
@@ -167,7 +249,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
   parenthesis-initialization to avoid calling a `std::initializer_list`
   overload.
 
-### Naming
+#### Naming
 
 - Class names, constants, and function names are lowercase with underscores.
 
@@ -199,7 +281,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
 - If a function has a return value, use `result` as variable name.
 
 
-### Breaking
+#### Breaking
 
 - Break constructor initializers after the comma, use two spaces for
   indentation, and place each initializer on its own line (unless you don't
@@ -267,7 +349,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
   }
   ```
 
-### Template Metaprogramming
+#### Template Metaprogramming
 
 - Use the `typename` keyword only to access dependent types. For general
   template parameters, use `class` instead:
@@ -319,7 +401,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
   constexpr auto my_trait_v = my_trait<T>::value;
   ```
 
-### Logging
+#### Logging
 
 - Available log levels are *ERROR*, *WARNING*, *INFO*, *DEBUG* and *TRACE*.
 
@@ -359,7 +441,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
   purpose algorithm implementations.
 
 
-### Comments
+#### Comments
 
 - Doxygen comments start with `///`.
 
@@ -399,7 +481,7 @@ style guidelines, see https://github.com/agis-/git-style-guide.)
 - Use `//` or `/*` and `*/` to define basic comments that should not be
   swallowed by Doxygen.
 
-### External Files
+#### External Files
 
 When integrating 3rd-party code into the code base, use the following scaffold:
 
@@ -430,7 +512,7 @@ When integrating 3rd-party code into the code base, use the following scaffold:
 (code here)
 ```
 
-### Unit Tests
+#### Unit Tests
 
 - Every new feature must come with unit tests.
 
@@ -505,9 +587,9 @@ When integrating 3rd-party code into the code base, use the following scaffold:
   FIXTURE_SCOPE_END()
   ```
 
-### Continuous Integration
+#### Continuous Integration
 
-We use Jenkins to build and test each commit. Merging a pull request requires
+We use Cirrus CI to build and test each commit. Merging a pull request requires
 that all checks pass for the latest commit in the branch. GitHub displays the
 status of the individual checks in the pull request. We currently perform the
 following checks:
@@ -517,38 +599,16 @@ following checks:
 
 - *style*: this checks whether the code follows our coding convention by
   running `clang-format` on the diff. In case the code violates our guidelines,
-  Jenkins creates the artifact `clang-format-diff.txt` for the build. You
+  Cirrus CI creates the artifact `clang-format-diff.txt` for the build. You
   should also receive this text file in the email notification.
 
 - *tests*: this checks whether all unit tests pass in all configurations.
-  Jenkins includes the number of failed configurations in the GitHub status as
-  well as in the email notification. For details, please visit the link to our
-  Jenkins instance on GitHub or in the email and review the unit test output of
-  failed configurations.
+  Cirrus CI includes the number of failed configurations in the GitHub status
+  as well as in the email notification. For details, please visit the link to
+  our Cirrus CI instance on GitHub or in the email and review the unit test
+  output of failed configurations.
 
 - *integration*: this checks whether the [integration tests][integration] pass,
   similar to the *tests* check.
 
-- *coverage*: this checks whether a coverage report was generated and whether
-  the overall coverage remains stable or improves (the check fails if the
-  coverage drops).
-
 [integration]: https://github.com/vast-io/vast/tree/master/integration
-
-## Coding Style | cmake
-
-### General
-
-- Prefer targets and properties over variables.
-
-- Don't use global *include_directories*.
-
-- Export consumable targets to both build and install directories.
-
-- Assign sensible export names for your targets, the `vast::` namespace is
-  implicitly prefixed.
-
-### Formatting
-
-- The cmake files are formatted with
-  [cmake-format](https://github.com/cheshirekow/cmake_format).
