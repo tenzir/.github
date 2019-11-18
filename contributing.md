@@ -85,8 +85,8 @@ two examples:
 A typical `TODO` could be:
 
 ```python
-# TODO: refactor this code to separate mechanism from policy
-# TODO: add another argument to process user-defined tags
+# TODO: refactor this code to separate mechanism from policy.
+# TODO: add another argument to process user-defined tags.
 ```
 
 ### EditorConfig
