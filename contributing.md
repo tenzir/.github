@@ -171,6 +171,14 @@ automatically apply EditorConfig files.
 
 - `*` and `&` bind to the *type*, e.g., `T* arg` instead of `T *arg`.
 
+- When declaring variables and functions, provide the [storage class
+  specifier] (`extern`, `static`, `thread_local`, `mutable`) first, followed
+  by the [declaration specifiers] in order of `friend`, `inline`, `virtual`,
+  `explicit`, `constexpr`, `consteval`, and `constinit`.
+
+[storage class specifier]: https://en.cppreference.com/w/cpp/language/storage_duration
+[declaration specifiers]: https://en.cppreference.com/w/cpp/language/declarations#Specifiers
+
 - Always use `auto` to declare a variable unless you cannot initialize it
   immediately or if you actually want a type conversion. In the latter case,
   provide a comment why this conversion is necessary.
