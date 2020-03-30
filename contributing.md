@@ -300,7 +300,9 @@ automatically apply EditorConfig files.
   the public interface. Getters and setters use the same member name without
   the suffix.
 
-- Put static non-const variables in an anonymous namespace.
+- Use the `static` keyword for translation unit-local variables and functions.
+
+- Use unnamed namespaces for translation unit-local type definitions.
 
 - Name generic temporary or input variables `x`, `y`, and `z`. If such
   variables represent a collection of elements, use their plural form `xs`,
