@@ -78,7 +78,7 @@ subsequent `:` is important for tooling, such as syntax highlighters. Here are
 two examples:
 
 ```cpp
-// FIXME: this currently fails on FreeBSD. 
+// FIXME: this currently fails on FreeBSD.
 // FIXME: this algorithms is broken for i < 0.
 ```
 
@@ -306,8 +306,9 @@ automatically apply EditorConfig files.
   variables represent a collection of elements, use their plural form `xs`,
   `ys`, and `zs`.
 
-- If a function has a return value, use `result` as variable name.
+- Prefix counter variables with `num_`.
 
+- If a function has a return value, use `result` as variable name.
 
 #### Breaking
 
