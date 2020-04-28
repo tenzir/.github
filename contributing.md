@@ -8,6 +8,9 @@ for different languages, and the coding style for VAST, which we use for all
 our C++ and CMake projects. The style is based on STL, [Google
 style][google-style], and [CAF style][caf-style] guidelines.
 
+Documentation for Tenzir projects can be found at
+[docs.tenzir.com](https://docs.tenzir.com).
+
 [google-style]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
 [caf-style]: https://github.com/actor-framework/actor-framework/blob/master/CONTRIBUTING.md
 
