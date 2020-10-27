@@ -69,6 +69,26 @@ guide](https://github.com/agis/git-style-guide).
   _how_ it addresses the underlying issue, and what _side-effects_ it might
   have.
 
+## Dependency Management
+
+When introducing a new or updating an existing dependency, please consider the
+following tasks:
+
+- **CMake:** Reason whether the dependency is a public, private, or interface
+  depdency or existing targets.
+
+- **Nix**: Update the Nix environment to link against the new depdendency.
+
+- **Dockerfile**: Update `Dockerfile` and `Dockerfile_prebuilt` to install new
+  dependencies.
+
+- **CI**: Install new dependencies in GitHub Actions workflow files, including
+  the Jupyter Notebook workflow.
+
+- **Homebrew**: Notify the Homebrew package maintainer about the new
+  dependency.
+
+- **Debian**: Notify the Debian package maintainer about the new dependency.
 
 ## Coding Style
 
