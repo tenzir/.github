@@ -69,6 +69,27 @@ guide](https://github.com/agis/git-style-guide).
   _how_ it addresses the underlying issue, and what _side-effects_ it might
   have.
 
+## Dependency Management
+
+When introducing a new dependency or updating an existing one, please consider
+the following tasks:
+
+- **CMake:** Determine whether the dependency is a public, private, or
+  interface depdency or existing targets.
+
+- **Nix**: Update the Nix environment to link against the proper dependency.
+
+- **Dockerfile**: Update `Dockerfile` and `Dockerfile_prebuilt` to reflect the
+  dependency changes.
+
+- **CI**: Update the dependencies in GitHub Actions workflow files, including
+  the Jupyter Notebook workflow.
+
+- **Homebrew**: Notify the Homebrew package maintainer about the dependency
+  changes.
+
+- **Debian**: Notify the Debian package maintainer about the dependency
+  changes.
 
 ## Coding Style
 
@@ -621,26 +642,6 @@ When integrating 3rd-party code into the code base, use the following scaffold:
 
 #### Continuous Integration
 
-We use Cirrus CI to build and test each commit. Merging a pull request requires
-that all checks pass for the latest commit in the branch. GitHub displays the
-status of the individual checks in the pull request. We currently perform the
-following checks:
-
-- *build* (displayed as `continuous-integration/$BRANCH`): this checks whether
-  the code compiles in all configurations (e.g., `Linux && gcc8`).
-
-- *style*: this checks whether the code follows our coding convention by
-  running `clang-format` on the diff. In case the code violates our guidelines,
-  Cirrus CI creates the artifact `clang-format-diff.txt` for the build. You
-  should also receive this text file in the email notification.
-
-- *tests*: this checks whether all unit tests pass in all configurations.
-  Cirrus CI includes the number of failed configurations in the GitHub status
-  as well as in the email notification. For details, please visit the link to
-  our Cirrus CI instance on GitHub or in the email and review the unit test
-  output of failed configurations.
-
-- *integration*: this checks whether the [integration tests][integration] pass,
-  similar to the *tests* check.
-
-[integration]: https://github.com/vast-io/vast/tree/master/integration
+We use GitHub Actions to build and test each commit. Merging a pull request
+requires that all checks pass for the latest commit in the branch. GitHub
+displays the status of the individual checks in the pull request.
