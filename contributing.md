@@ -644,5 +644,4 @@ When integrating 3rd-party code into the code base, use the following scaffold:
 
 We use GitHub Actions to build and test each commit. Merging a pull request
 requires that all checks pass for the latest commit in the branch. GitHub
-displays the status of the individual checks in the pull request. Passing all
-checks is mandatory for every pull request.
+displays the status of the individual checks in the pull request.
