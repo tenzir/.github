@@ -510,18 +510,6 @@ automatically apply EditorConfig files.
   /// @param y Scales *x* by a constant factor.
   ```
 
-- For multi-line comments, break after the `@cmd` argument:
-
-  ```cpp
-  /// Does something.
-  /// @param x This argument has rather sophisticated semantics and therefore
-  ///          needs a detailed explanation.
-  /// @param y Just another arugment.
-  /// @returns A function of *x* and *y*.
-  template <class T, class U>
-  int f(T x, U y);
-  ```
-
 - Use `@tparam` to document template parameters.
 
 - For simple getters or obvious functions returning a value, use a one-line
