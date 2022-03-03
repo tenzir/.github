@@ -16,26 +16,40 @@ Documentation for Tenzir projects can be found at
 
 ## Git and GitHub Workflow
 
-At Tenzir, our git workflow encompasses the following key aspects.
+The following sketch visualizes our branching model:
+
+![Branching Model](https://user-images.githubusercontent.com/53797/156560785-c7279447-63eb-4428-9a11-9c90cc03acc8.png)
+
+Our git workflow looks as follows:
 
 - The `master` branch reflects the latest state of development, and should
   always compile.
 
+- In case we need to release a hotfix, we use dedicated patch release branches.
+
+- The `stable` branch always points to the latest release that is not a release
+  candidate. It exists so support a streamlined workflow for some packaging
+  tools (e.g., Nix).
+
 - For new features or fixes, use *topic branches* that branch off `master` with
-  a naming convention of `topic/short-description`. After completing work in a
-  topic branch, check the following steps to prepare for a merge back into
-  `master`:
+  a naming convention of `topic/description`. After completing work in a topic
+  branch, check the following steps to prepare for a merge back into `master`:
 
   + Squash your commits such that each commit reflects a self-contained change.
     You can interactively rebase all commits in your current pull request with
     `git rebase --interactive $(git merge-base origin/master HEAD)`.
+
   + Create a pull request to `master` on GitHub.
+
   + Wait for the results of continuous integration tools and fix any reported
     issues.
+
   + Ask a maintainer to review your work when your changes merge cleanly. If
     you don't want a specific maintainer's feedback, ask for a review from the
     `tenzir/backend` or `tenzir/frontend` teams.
+
   + Address the feedback articulated during the review.
+
   + A maintainer will merge the topic branch into `master` after it passes the
     code review.
 
@@ -43,10 +57,10 @@ At Tenzir, our git workflow encompasses the following key aspects.
   *issue branches* that branch off `master` with a naming convention of
   `issue/XXX`, replacing XXX with the issue number.
 
-- Tenzir internally uses ClubHouse for project management, and employees are
-  advised to create *story branches* that branch off `master` with a naming
-  convention of `story/chXXX`, replacing XXX with the story number.
-
+- Internally, we use [Shortcut](https://shortcut.com/) for project management,
+  and employees are advised to create *story branches* that branch off `master`
+  with a naming convention of `story/sc-XXX/description`, replacing XXX with
+  the story number.
 
 ### Commit Messages
 
