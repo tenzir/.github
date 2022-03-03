@@ -27,9 +27,9 @@ Our git workflow looks as follows:
 
 - In case we need to release a hotfix, we use dedicated patch release branches.
 
-- The stable `branch` always points to the latest release that is not a release
-  candidate. CI resets it automatically. It exists so support a streamlined
-  workflow for some packaging tools (e.g., Nix).
+- The `stable` branch always points to the latest release that is not a release
+  candidate. It exists so support a streamlined workflow for some packaging
+  tools (e.g., Nix).
 
 - For new features or fixes, use *topic branches* that branch off `master` with
   a naming convention of `topic/description`. After completing work in a topic
