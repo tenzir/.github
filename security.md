@@ -15,7 +15,7 @@ vulneratbility:
    project maintainers only. Please do *not* submit a normal issue or pull
    request in our public repositories.
 2. We will confirm the receipt of the report within two business days. (It make
-   take additional time time to resolve the issue.) 
+   take additional time time to resolve the issue.)
 3. If you already have a patch, we will review it and approve it privately;
    once merged it will be publicly disclosed. We will acknowledge you in our
    changelog.
