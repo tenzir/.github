@@ -29,8 +29,11 @@ Our git workflow looks as follows:
     issues.
 
   + Ask a maintainer to review your work when your changes merge cleanly. If
-    you don't want a specific maintainer's feedback, ask for a review from the
-    `tenzir/backend` or `tenzir/frontend` teams.
+    you don't want a specific maintainer's feedback, ask for a team review from
+    [tenzir/vast](https://github.com/orgs/tenzir/teams/vast), or for more
+    specific aspects from
+    [tenzir/devops](https://github.com/orgs/tenzir/teams/devops) and
+    [tenzir/secops](https://github.com/orgs/tenzir/teams/secops).
 
   + Address the feedback articulated during the review.
 
@@ -38,8 +41,8 @@ Our git workflow looks as follows:
     code review.
 
 - Similarly, for features or fixes relating to a specific GitHub issue, use
-  *issue branches* that branch off `master` with a naming convention of
-  `issue/XXX`, replacing XXX with the issue number.
+  *topic branches* that branch off `master` with a naming convention of
+  `topic/XXX`, replacing XXX with a short description of the issue.
 
 - Internally, we use [Shortcut](https://shortcut.com/) for project management,
   and employees are advised to create *story branches* that branch off `master`
@@ -77,14 +80,7 @@ the following tasks:
 
 - **Nix**: Update the Nix environment to link against the proper dependency.
 
-- **Dockerfile**: Update `Dockerfile` and `Dockerfile_prebuilt` to reflect the
-  dependency changes.
+- **Dockerfile**: Update `Dockerfile` to reflect the dependency changes.
 
 - **CI**: Update the dependencies in GitHub Actions workflow files, including
   the Jupyter Notebook workflow.
-
-- **Homebrew**: Notify the Homebrew package maintainer about the dependency
-  changes.
-
-- **Debian**: Notify the Debian package maintainer about the dependency
-  changes.
