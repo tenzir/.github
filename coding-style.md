@@ -93,19 +93,8 @@ style][google-style], and [CAF style][caf-style] guidelines.
 
 ### General
 
-- Use 2 spaces per indentation level.
-
-- No tabs, ever.
-
-- No C-style casts, ever.
-
-- 80 characters max per line.
-
 - Minimize vertical whitespace within functions. Use comments to separate
   logical code blocks.
-
-- Namespaces and access modifiers (e.g., `public`) do not increase the
-  indentation level.
 
 - The `const` keyword precedes the type, e.g., `const T&` as opposed to
   `T const&`.
@@ -193,8 +182,9 @@ style][google-style], and [CAF style][caf-style] guidelines.
 - Use the order `public`, `protected`, `private` for functions and members in
   classes.
 
-- Mark single-argument constructors as `explicit` to avoid implicit
-  conversions.
+- Mark single-argument constructors as `explicit` to avoid implicit conversions;
+  use `explicit(false)` to indicate that a non-explicit constructor is
+  intentional.
 
 - The order of member functions within a class is: constructors, operators,
   mutating members, accessors.
@@ -373,32 +363,10 @@ style][google-style], and [CAF style][caf-style] guidelines.
 
 ### Logging
 
-- Available log levels are *ERROR*, *WARNING*, *INFO*, *DEBUG* and *TRACE*.
+- Available log levels are `ERROR`, `WARN`, `INFO`, `VERBOSE`, `DEBUG` and
+  `TRACE`.
 
-- Messages can be sent by using the `VAST_\<level>` and `VAST_\<level>_ANON`
-  macros.
-
-- The `VAST_\<level>` macros are intended to be used with a subject as the fist
-  argument. Use them to create a sentence of the form 'subject verb object'.
-  For example:
-  ```cpp
-  VAST_WARNING(self, "got a request for unknown query ID", query_id);
-  ```
-
-  Which gets printed as:
-  ```sh
-  index got a request for unkown query ID <181f5b1f-c673-4e98-acd2-ef762fe567a2>
-  ```
-
-- The `VAST_\<level>_ANON` macros are available for situations where **n**o
-  **s**ubject is suitable for the first argument to the other macro variant.
-  They can either be used to inject a subject manually, or create a message
-  in the *gerund* form. For example:
-  ```cpp
-  VAST_DEBUG_ANON(__func__, "creating directory", dir);
-  ```
-
-- By default, use the `VAST_\<level>` variants.
+- Messages can be sent by using the `VAST_<level>` macros.
 
 - Try to restrict usage of the `VAST_INFO` message type to the main actors.
   Info is the chattiest level that most users will see, so it should require
@@ -444,19 +412,14 @@ style][google-style], and [CAF style][caf-style] guidelines.
 When integrating 3rd-party code into the code base, use the following scaffold:
 
 ```cpp
-/******************************************************************************
- *                    _   _____   __________                                  *
- *                   | | / / _ | / __/_  __/     Visibility                   *
- *                   | |/ / __ |_\ \  / /          Across                     *
- *                   |___/_/ |_/___/ /_/       Space and Time                 *
- *                                                                            *
- * This file is part of VAST. It is subject to the license terms in the       *
- * LICENSE file found in the top-level directory of this distribution and at  *
- * http://vast.io/license. No part of VAST, including this file, may be       *
- * copied, modified, propagated, or distributed except according to the terms *
- * contained in the LICENSE file.                                             *
- ******************************************************************************/
-
+//    _   _____   __________
+//   | | / / _ | / __/_  __/     Visibility
+//   | |/ / __ |_\ \  / /          Across
+//   |___/_/ |_/___/ /_/       Space and Time
+//
+// SPDX-FileCopyrightText: (c) 2022 The VAST Contributors
+// SPDX-License-Identifier: BSD-3-Clause
+//
 // This file comes from a 3rd party and has been adapted to fit into the VAST
 // code base. Details about the original file:
 //
@@ -487,18 +450,13 @@ When integrating 3rd-party code into the code base, use the following scaffold:
   `vast/foo.hpp` that would go into `test/foo.cpp`.
 
   ```cpp
-  /******************************************************************************
-   *                    _   _____   __________                                  *
-   *                   | | / / _ | / __/_  __/     Visibility                   *
-   *                   | |/ / __ |_\ \  / /          Across                     *
-   *                   |___/_/ |_/___/ /_/       Space and Time                 *
-   *                                                                            *
-   * This file is part of VAST. It is subject to the license terms in the       *
-   * LICENSE file found in the top-level directory of this distribution and at  *
-   * http://vast.io/license. No part of VAST, including this file, may be       *
-   * copied, modified, propagated, or distributed except according to the terms *
-   * contained in the LICENSE file.                                             *
-   ******************************************************************************/
+  //    _   _____   __________
+  //   | | / / _ | / __/_  __/     Visibility
+  //   | |/ / __ |_\ \  / /          Across
+  //   |___/_/ |_/___/ /_/       Space and Time
+  //
+  // SPDX-FileCopyrightText: (c) 2022 The VAST Contributors
+  // SPDX-License-Identifier: BSD-3-Clause
 
   #define SUITE foo
 
