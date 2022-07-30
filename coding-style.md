@@ -373,11 +373,11 @@ style][google-style], and [CAF style][caf-style] guidelines.
   no or only little understanding of VASTs system architecture for the
   reader to understand.
 
-- Messages sent at the trace level add the additional effect of writing a
-  second message at the exit of the current scope. The trace level can be
-  used to create a trace of the call stack with fine grained control over
-  its depth. Omit trace messages from helper functions and generic / general
-  purpose algorithm implementations.
+- Use the `VAST_TRACE_SCOPE` macro to elicit an additional message at the exit
+  of the current scope. The trace level can be used to create a trace of the
+  call stack with fine grained control over its depth. Since the size of trace
+  messages can quickly go out of hand, omit trace messages from helper functions
+  and generic algorithm implementations.
 
 ### Comments
 
