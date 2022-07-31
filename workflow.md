@@ -69,18 +69,3 @@ guide](https://github.com/agis/git-style-guide).
   indented at 72 characters per line, explaining *why* the change is needed,
   *how* it addresses the underlying issue, and what *side-effects* it might
   have.
-
-## Dependency Management
-
-When introducing a new dependency or updating an existing one, please consider
-the following tasks:
-
-- **CMake:** Determine whether the dependency is a public, private, or
-  interface depdency or existing targets.
-
-- **Nix**: Update the Nix environment to link against the proper dependency.
-
-- **Dockerfile**: Update `Dockerfile` to reflect the dependency changes.
-
-- **CI**: Update the dependencies in GitHub Actions workflow files, including
-  the Jupyter Notebook workflow.
