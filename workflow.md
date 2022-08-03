@@ -19,25 +19,25 @@ Our git workflow looks as follows:
   a naming convention of `topic/description`. After completing work in a topic
   branch, check the following steps to prepare for a merge back into `master`:
 
-  + Squash your commits such that each commit reflects a self-contained change.
+  - Squash your commits such that each commit reflects a self-contained change.
     You can interactively rebase all commits in your current pull request with
     `git rebase --interactive $(git merge-base origin/master HEAD)`.
 
-  + Create a pull request to `master` on GitHub.
+  - Create a pull request to `master` on GitHub.
 
-  + Wait for the results of continuous integration tools and fix any reported
+  - Wait for the results of continuous integration tools and fix any reported
     issues.
 
-  + Ask a maintainer to review your work when your changes merge cleanly. If
+  - Ask a maintainer to review your work when your changes merge cleanly. If
     you don't want a specific maintainer's feedback, ask for a team review from
     [tenzir/vast](https://github.com/orgs/tenzir/teams/vast), or for more
     specific aspects from
     [tenzir/devops](https://github.com/orgs/tenzir/teams/devops) and
     [tenzir/secops](https://github.com/orgs/tenzir/teams/secops).
 
-  + Address the feedback articulated during the review.
+  - Address the feedback articulated during the review.
 
-  + A maintainer will merge the topic branch into `master` after it passes the
+  - A maintainer will merge the topic branch into `master` after it passes the
     code review.
 
 - Similarly, for features or fixes relating to a specific GitHub issue, use
@@ -66,21 +66,6 @@ guide](https://github.com/agis/git-style-guide).
 - The second line is empty.
 
 - Optional long descriptions as full sentences begin on the third line,
-  indented at 72 characters per line, explaining _why_ the change is needed,
-  _how_ it addresses the underlying issue, and what _side-effects_ it might
+  indented at 72 characters per line, explaining *why* the change is needed,
+  *how* it addresses the underlying issue, and what *side-effects* it might
   have.
-
-## Dependency Management
-
-When introducing a new dependency or updating an existing one, please consider
-the following tasks:
-
-- **CMake:** Determine whether the dependency is a public, private, or
-  interface depdency or existing targets.
-
-- **Nix**: Update the Nix environment to link against the proper dependency.
-
-- **Dockerfile**: Update `Dockerfile` to reflect the dependency changes.
-
-- **CI**: Update the dependencies in GitHub Actions workflow files, including
-  the Jupyter Notebook workflow.
