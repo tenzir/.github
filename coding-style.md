@@ -511,25 +511,24 @@ displays the status of the individual checks in the pull request.
 
 ### Code Coverage
 
-The GitHub Actions workflow [Analysis][analysis-workflow] contains a _Code
-Coverage_ job that runs unit tests for libvast and bundled plugins, and
+The GitHub Actions workflow [Analysis][analysis-workflow] contains a *Code
+Coverage* job that runs unit tests for libvast and bundled plugins, and
 integration tests for VAST and VAST with bundled plugins to create a detailed
 line coverage report. The CI creates and uploads reports as an artifact in the
 Analysis workflow as part of every pull request and for every merge to master.
 
-Note that a branch being covered does not imply that the tests covering it are
-semantically correct, but the report is still is a valuable indicator
-especially for new tests to see whether a branch is not being tested at all.
-
 In addition to the local report, the workflow uploads the coverage report to
-[Codecov][codecov-vast], which offers a convenient visual interface for seeing
-coverage changes introduced by code changes:
+[Codecov][codecov-vast], which offers a visual interface for seeing coverage
+changes introduced by code changes:
 
 [![Codecov Report][codecov-grid]][codecov-vast]
 
 Each block represents a single file in the project. The size and color of each
 block is represented by the number of statements and the coverage,
 respectively.
+
+Codecov offers also a [sunburst][codecov-sunburst] and [icicle][codecov-icicle]
+graph, visualizing the same data with a different approach.
 
 To generate a coverage report locally, create a new Debug build of VAST with
 the CMake option `-D VAST_ENABLE_CODE_COVERAGE=ON` and run the `ccov` build
@@ -538,3 +537,5 @@ target. This creates a coverage report in `<path/to/build-dir>/ccov`.
 [analysis-workflow]: https://github.com/tenzir/vast/actions/workflows/analysis.yaml
 [codecov-vast]: https://app.codecov.io/gh/tenzir/vast
 [codecov-grid]: https://codecov.io/gh/tenzir/vast/branch/master/graphs/tree.svg?token=T9JgpY4KHO
+[codecov-sunburst]: https://codecov.io/gh/tenzir/vast/branch/master/graphs/sunburst.svg?token=T9JgpY4KHO
+[codecov-icicle]: https://codecov.io/gh/tenzir/vast/branch/master/graphs/sunburst.svg?token=T9JgpY4KHO
