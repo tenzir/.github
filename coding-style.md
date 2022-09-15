@@ -531,6 +531,10 @@ Each block represents a single file in the project. The size and color of each
 block is represented by the number of statements and the coverage,
 respectively.
 
+To generate a coverage report locally, create a new Debug build of VAST with
+the CMake option `-D VAST_ENABLE_CODE_COVERAGE=ON` and run the `ccov` build
+target. This creates a coverage report in `<path/to/build-dir>/ccov`.
+
 [analysis-workflow]: https://github.com/tenzir/vast/actions/workflows/analysis.yaml
 [codecov-vast]: https://app.codecov.io/gh/tenzir/vast
 [codecov-grid]: https://codecov.io/gh/tenzir/vast/branch/master/graphs/tree.svg?token=T9JgpY4KHO
