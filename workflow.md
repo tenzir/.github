@@ -6,7 +6,7 @@ The following diagram visualizes our branching model:
 
 Our git workflow looks as follows:
 
-- The `master` branch reflects the latest state of development, and should
+- The `main` branch reflects the latest state of development, and should
   always compile.
 
 - In case we need to release a hotfix, we use dedicated patch release branches.
@@ -15,39 +15,31 @@ Our git workflow looks as follows:
   candidate. It exists so support a streamlined workflow for some packaging
   tools (e.g., Nix).
 
-- For new features or fixes, use *topic branches* that branch off `master` with
+- For new features or fixes, use *topic branches* that branch off `main` with
   a naming convention of `topic/description`. After completing work in a topic
-  branch, check the following steps to prepare for a merge back into `master`:
+  branch, check the following steps to prepare for a merge back into `main`:
 
   - Squash your commits such that each commit reflects a self-contained change.
     You can interactively rebase all commits in your current pull request with
-    `git rebase --interactive $(git merge-base origin/master HEAD)`.
+    `git rebase --interactive $(git merge-base origin/main HEAD)`.
 
-  - Create a pull request to `master` on GitHub.
+  - Create a pull request to `main` on GitHub.
 
   - Wait for the results of continuous integration tools and fix any reported
     issues.
 
   - Ask a maintainer to review your work when your changes merge cleanly. If
     you don't want a specific maintainer's feedback, ask for a team review from
-    [tenzir/vast](https://github.com/orgs/tenzir/teams/vast), or for more
-    specific aspects from
-    [tenzir/devops](https://github.com/orgs/tenzir/teams/devops) and
-    [tenzir/secops](https://github.com/orgs/tenzir/teams/secops).
+    [tenzir/engineering](https://github.com/orgs/tenzir/teams/engineering).
 
   - Address the feedback articulated during the review.
 
-  - A maintainer will merge the topic branch into `master` after it passes the
+  - A maintainer will merge the topic branch into `main` after it passes the
     code review.
 
 - Similarly, for features or fixes relating to a specific GitHub issue, use
-  *topic branches* that branch off `master` with a naming convention of
+  *topic branches* that branch off `main` with a naming convention of
   `topic/XXX`, replacing XXX with a short description of the issue.
-
-- Internally, we use [Shortcut](https://shortcut.com/) for project management,
-  and employees are advised to create *story branches* that branch off `master`
-  with a naming convention of `story/sc-XXX/description`, replacing XXX with
-  the story number.
 
 ## Commit Messages
 
