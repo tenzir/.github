@@ -65,7 +65,7 @@ A typical `TODO` could be:
 
 ## CMake
 
-CMake is the build scaffold of VAST.
+CMake is the build scaffold of Tenzir.
 
 ### General
 
@@ -75,7 +75,7 @@ CMake is the build scaffold of VAST.
 
 - Export consumable targets to both build and install directories.
 
-- Assign sensible export names for your targets, the `vast::` namespace is
+- Assign sensible export names for your targets, the `tenzir::` namespace is
   implicitly prefixed.
 
 ### Formatting
@@ -85,7 +85,7 @@ CMake is the build scaffold of VAST.
 
 ## C++
 
-VAST's core is written in C++. We follow a style based on STL, [Google
+Tenzir's core is written in C++. We follow a style based on STL, [Google
 style][google-style], and [CAF style][caf-style] guidelines.
 
 [google-style]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
@@ -153,9 +153,9 @@ style][google-style], and [CAF style][caf-style] guidelines.
 
   ```cpp
   // iff a matching header exists
-  #include "vast/matching_header.hpp"
+  #include "tenzir/matching_header.hpp"
 
-  #include "vast/logger.hpp"
+  #include "tenzir/logger.hpp"
 
   #include <3rd/party.hpp>
 
@@ -168,7 +168,7 @@ style][google-style], and [CAF style][caf-style] guidelines.
   accordingly. Includes separated by preprocessor directives need to be sorted
   manually.
 
-  Within each section, the order should be alphabetical. VAST includes should
+  Within each section, the order should be alphabetical. Tenzir includes should
   always be in double quotes and relative to the source directory, whereas
   system-wide includes in angle brackets. See below for an example on how to
   structure includes in unit tests.
@@ -219,7 +219,7 @@ style][google-style], and [CAF style][caf-style] guidelines.
   not use an explicit `get_` or `set_` prefix. Classes used to implement
   metaprogramming functions also should use verbs, e.g., `remove_const`.
 
-- All library macros should start with `VAST_` to avoid potential clashes with
+- All library macros should start with `TENZIR_` to avoid potential clashes with
   external libraries.
 
 - Names of (i) classes/structs, (ii) functions, and (iii) enums should be
@@ -366,14 +366,14 @@ style][google-style], and [CAF style][caf-style] guidelines.
 - Available log levels are `ERROR`, `WARN`, `INFO`, `VERBOSE`, `DEBUG` and
   `TRACE`.
 
-- Messages can be sent by using the `VAST_<level>` macros.
+- Messages can be sent by using the `TENZIR_<level>` macros.
 
-- Try to restrict usage of the `VAST_INFO` message type to the main actors.
+- Try to restrict usage of the `TENZIR_INFO` message type to the main actors.
   Info is the chattiest level that most users will see, so it should require
-  no or only little understanding of VASTs system architecture for the
+  no or only little understanding of Tenzir's system architecture for the
   reader to understand.
 
-- Use the `VAST_TRACE_SCOPE` macro to elicit an additional message at the exit
+- Use the `TENZIR_TRACE_SCOPE` macro to elicit an additional message at the exit
   of the current scope. The trace level can be used to create a trace of the
   call stack with fine grained control over its depth. Since the size of trace
   messages can quickly go out of hand, omit trace messages from helper functions
@@ -417,10 +417,10 @@ When integrating 3rd-party code into the code base, use the following scaffold:
 //   | |/ / __ |_\ \  / /          Across
 //   |___/_/ |_/___/ /_/       Space and Time
 //
-// SPDX-FileCopyrightText: (c) 2022 The VAST Contributors
+// SPDX-FileCopyrightText: (c) 2022 The Tenzir Contributors
 // SPDX-License-Identifier: BSD-3-Clause
 //
-// This file comes from a 3rd party and has been adapted to fit into the VAST
+// This file comes from a 3rd party and has been adapted to fit into the Tenzir
 // code base. Details about the original file:
 //
 // - Repository: https://github.com/Microsoft/GSL
@@ -438,7 +438,7 @@ When integrating 3rd-party code into the code base, use the following scaffold:
 - Every new feature must come with unit tests.
 
 - The filename and path should mirror the component under test. For example,
-  the component `vast/detail/feature.hpp` should have a test file called
+  the component `tenzir/detail/feature.hpp` should have a test file called
   `test/detail/feature.cpp`.
 
 - The include order in unit tests resembles the order for standard headers,
@@ -447,7 +447,7 @@ When integrating 3rd-party code into the code base, use the following scaffold:
 - Make judicious use of *fixtures* for prepping your test environment.
 
 - The snippet below illustrates a simple example for a new component
-  `vast/foo.hpp` that would go into `test/foo.cpp`.
+  `tenzir/foo.hpp` that would go into `test/foo.cpp`.
 
   ```cpp
   //    _   _____   __________
@@ -455,22 +455,22 @@ When integrating 3rd-party code into the code base, use the following scaffold:
   //   | |/ / __ |_\ \  / /          Across
   //   |___/_/ |_/___/ /_/       Space and Time
   //
-  // SPDX-FileCopyrightText: (c) 2022 The VAST Contributors
+  // SPDX-FileCopyrightText: (c) 2022 The Tenzir Contributors
   // SPDX-License-Identifier: BSD-3-Clause
 
   #define SUITE foo
 
-  #include "vast/foo.hpp" // Unit under test
+  #include "tenzir/foo.hpp" // Unit under test
 
-  #include "test.hpp"     // Unit test framework and scaffolding
+  #include "test.hpp"       // Unit test framework and scaffolding
 
-  #include <iostream>     // standard library includes
+  #include <iostream>       // standard library includes
 
-  #include <caf/...>      // CAF includes
+  #include <caf/...>        // CAF includes
 
-  #include "vast/..."     // VAST includes
+  #include "tenzir/..."     // Tenzir includes
 
-  using namespace vast;
+  using namespace tenzir;
 
   namespace {
 
@@ -512,16 +512,16 @@ displays the status of the individual checks in the pull request.
 ### Code Coverage
 
 The GitHub Actions workflow [Analysis][analysis-workflow] contains a *Code
-Coverage* job that runs unit tests for libvast and bundled plugins, and
-integration tests for VAST and VAST with bundled plugins to create a detailed
-line coverage report. The CI creates and uploads reports as an artifact in the
+Coverage* job that runs unit tests for libtenzir and bundled plugins, and
+integration tests for Tenzir with bundled plugins to create a detailed line
+coverage report. The CI creates and uploads reports as an artifact in the
 Analysis workflow as part of every pull request and for every merge to master.
 
 In addition to the local report, the workflow uploads the coverage report to
-[Codecov][codecov-vast], which offers a visual interface for seeing coverage
+[Codecov][codecov-tenzir], which offers a visual interface for seeing coverage
 changes introduced by code changes:
 
-[![Codecov Report][codecov-grid]][codecov-vast]
+[![Codecov Report][codecov-grid]][codecov-tenzir]
 
 Each block represents a single file in the project. The size and color of each
 block is represented by the number of statements and the coverage,
@@ -530,12 +530,12 @@ respectively.
 Codecov offers also a [sunburst][codecov-sunburst] and [icicle][codecov-icicle]
 graph, visualizing the same data with a different approach.
 
-To generate a coverage report locally, create a new Debug build of VAST with
-the CMake option `-D VAST_ENABLE_CODE_COVERAGE=ON` and run the `ccov` build
+To generate a coverage report locally, create a new Debug build of Tenzir with
+the CMake option `-D TENZIR_ENABLE_CODE_COVERAGE=ON` and run the `ccov` build
 target. This creates a coverage report in `<path/to/build-dir>/ccov`.
 
-[analysis-workflow]: https://github.com/tenzir/vast/actions/workflows/analysis.yaml
-[codecov-vast]: https://app.codecov.io/gh/tenzir/vast
-[codecov-grid]: https://codecov.io/gh/tenzir/vast/branch/master/graphs/tree.svg?token=T9JgpY4KHO
-[codecov-sunburst]: https://codecov.io/gh/tenzir/vast/branch/master/graphs/sunburst.svg?token=T9JgpY4KHO
-[codecov-icicle]: https://codecov.io/gh/tenzir/vast/branch/master/graphs/sunburst.svg?token=T9JgpY4KHO
+[analysis-workflow]: https://github.com/tenzir/tenzir/actions/workflows/analysis.yaml
+[codecov-tenzir]: https://app.codecov.io/gh/tenzir/tenzir
+[codecov-grid]: https://codecov.io/gh/tenzir/tenzir/branch/master/graphs/tree.svg?token=T9JgpY4KHO
+[codecov-sunburst]: https://codecov.io/gh/tenzir/tenzir/branch/master/graphs/sunburst.svg?token=T9JgpY4KHO
+[codecov-icicle]: https://codecov.io/gh/tenzir/tenzir/branch/master/graphs/sunburst.svg?token=T9JgpY4KHO
