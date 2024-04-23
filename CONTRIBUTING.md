@@ -10,4 +10,4 @@ please take a moment to familiarize yourself with the following topics:
 5. [Reporting Security Issues](SECURITY.md)
 
 All of the above contribution guidelines is also available on our website at
-<http://vast.io/docs/develop-vast>.
+<https://docs.tenzir.com/contribute>.
