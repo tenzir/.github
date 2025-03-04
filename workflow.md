@@ -2,7 +2,7 @@
 
 The following diagram visualizes our branching model:
 
-![Branching Model](https://user-images.githubusercontent.com/53797/156560785-c7279447-63eb-4428-9a11-9c90cc03acc8.png)
+![Git Branching Model](git-branching-model.svg)
 
 Our git workflow looks as follows:
 
