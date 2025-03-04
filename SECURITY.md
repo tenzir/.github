@@ -29,7 +29,6 @@ patch their software.
 ## Contact
 
 If you have any questions, please contact us directly at
-[security@tenzir.com][security-mail].
+[security@tenzir.com](mailto://security@tenzir.com).
 
-[security-mail]: mailto://security@tenzir.com
 [help-security-advisory]: https://help.github.com/en/articles/creating-a-maintainer-security-advisory

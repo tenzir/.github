@@ -47,7 +47,7 @@ threatening, offensive, or harmful.
 
 This Code of Conduct applies within all project spaces, and it also applies
 when an individual is representing the project or its community in public
-spaces.  Examples of representing a project or community include using an
+spaces. Examples of representing a project or community include using an
 official project e-mail address, posting via an official social media account,
 or acting as an appointed representative at an online or offline event.
 Representation of a project may be further defined and clarified by project
@@ -71,12 +71,9 @@ members of the project's leadership.
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant][contributor-covenant-url],
-version 1.4, available at
-<https://www.contributor-covenant.org/version/1/4/code-of-conduct.html>.
+This Code of Conduct is adapted from the [Contributor
+Covenant](https://www.contributor-covenant.org), version 1.4, available at
+https://www.contributor-covenant.org/version/1/4/code-of-conduct.html.
 
 For answers to common questions about this code of conduct, see
-<https://www.contributor-covenant.org/faq>.
-
-[engineering-email]: mailto://engineering@tenzir.com
-[contributor-covenant-url]: https://www.contributor-covenant.org
+https://www.contributor-covenant.org/faq.

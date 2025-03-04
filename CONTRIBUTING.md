@@ -10,4 +10,4 @@ please take a moment to familiarize yourself with the following topics:
 5. [Reporting Security Issues](SECURITY.md)
 
 All of the above contribution guidelines is also available on our website at
-<https://docs.tenzir.com/contribute>.
+https://docs.tenzir.com/.
