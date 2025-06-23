@@ -27,7 +27,10 @@ endef
 
 export DISCLAIMER
 
-docs: files
+docs: files lint
+
+lint:
+	@prettier --write "$(DOCS)"
 
 destination:
 	@test -d "$(DOCS)" || mkdir -p "$(DOCS)"
