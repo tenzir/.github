@@ -30,7 +30,7 @@ export DISCLAIMER
 docs: files lint
 
 lint:
-	@prettier --write "$(DOCS)"
+	@npx prettier --write "$(DOCS)"
 
 destination:
 	@test -d "$(DOCS)" || mkdir -p "$(DOCS)"
