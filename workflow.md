@@ -11,7 +11,7 @@ Our git workflow looks as follows:
 
 - In case we need to release a hotfix, we use dedicated patch release branches.
 
-- The `stable` branch always points to the latest release that is not a release
+- The `latest` branch always points to the latest release that is not a release
   candidate. It exists so support a streamlined workflow for some packaging
   tools (e.g., Nix).
 
